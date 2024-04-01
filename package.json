@@ -2,7 +2,7 @@
   "name": "react-app",
   "version": "0.1.0",
   "description": "Generated from https://github.com/SwiftOVATE/javaScript-frameworks",
-  "homepage": "https://swiftovate.github.io/Landing-Page/",
+  "homepage": "https://swiftovate.github.io/",
   "private": true,
   "dependencies": {
     "@testing-library/jest-dom": "^5.16.5",
