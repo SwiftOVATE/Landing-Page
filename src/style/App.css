@@ -32,8 +32,9 @@
 
 .fade-in-section {
     opacity: 0;
+    transform: translateX(-50px);
     visibility: hidden;
-    transition: opacity 1s ease-out !important;
+    transition: opacity 1s ease-out, transform 1s ease-out !important;
     will-change: opacity, visibility;
 }
 

@@ -10,8 +10,6 @@ export const TagPage = () => {
     //fetch the tag from the url and filter the cards
     const props = CardsData.find((card) => card.tag === tag)
 
-
-
     return (
         <div className="fullpage h-screen">
             <div className="flex flex-col justify-between h-screen bg-slate-900">
@@ -19,7 +17,7 @@ export const TagPage = () => {
                     <div className="text-white text-5xl max-lg:text-3xl max-md:text-xl font-bold whitespace-nowrap">
                         Some of our {tag} products
                     </div>
-                    <Link to={'/SwiftOVATE/'}>
+                    <Link to={'/Landing-Page/'}>
                         <p
                             className={`mt-5
                             ${props?.tagcolor}
