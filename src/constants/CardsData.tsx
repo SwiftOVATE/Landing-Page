@@ -1,67 +1,59 @@
-export const CardsData = [
-    {
-        name: "react-resume",
-        href: 'https://github.com/SwiftOVATE/react-resume/',
-        description: 'Build your own resume using React',
-        image: 'https://repository-images.githubusercontent.com/586749730/ca90bb68-b35c-45b9-8d88-65e3d989d550',
-        tag: 'Portfolio',
-        tagcolor: 'bg-pink-800',
-    },
-    {
-        name: "react-portfolio",
-        href: 'https://github.com/SwiftOVATE/react-portfolio/',
-        description: 'Build your own portfolio using React',
-        image: 'https://repository-images.githubusercontent.com/586749730/ca90bb68-b35c-45b9-8d88-65e3d989d550',
-        tag: 'Portfolio',
-        tagcolor: 'bg-pink-800',
-    },
-    {
-        name: "github-portfolio",
-        href: 'https://swiftovate.github.io/github-portfolio/',
-        description: 'Build your own portfolio using GitHub API',
-        image: 'https://repository-images.githubusercontent.com/589303939/2f8cca5f-d198-4e04-9534-27e59593ae68',
-        tag: 'Portfolio',
-        tagcolor: 'bg-pink-800',
-    },
-    {
-        name: "google-sheets-api",
-        href: 'https://swiftovate.github.io/google-sheets-api/',
-        description: 'Get boilerplate code for Google Sheets API',
-        image: 'https://repository-images.githubusercontent.com/578009726/a7ef191c-f39b-4eac-a073-2ef953673138',
-        tag: 'Boilerplate',
-        tagcolor: 'bg-sky-800',
-    },
-    {
-        name: "firebase-crud",
-        href: 'https://firebase-crud-swiftovate.netlify.app/',
-        description: 'Provides code for basic CRUD operations using Firebase',
-        image: 'https://repository-images.githubusercontent.com/577332347/8c6d1a38-4a52-4895-8f3c-6d00a856da9e',
-        tag: 'Boilerplate',
-        tagcolor: 'bg-sky-800',
-    },
-    {
-        name: "node-backend",
-        href: 'https://swiftovate.github.io/node-backend/',
-        description: 'Provides boilerplate code for a Node.js backend',
-        image: 'https://repository-images.githubusercontent.com/573531482/518db2ae-ce84-40a6-9427-0f274d67124f',
-        tag: 'Boilerplate',
-        tagcolor: 'bg-sky-800',
-    },
-    {
-        name: "whatsapp-url",
-        href: 'https://swiftovate.github.io/whatsapp-url/',
-        description: 'Provides a simple way to generate a WhatsApp URL',
-        image: 'https://repository-images.githubusercontent.com/586739384/6f2256de-734a-428d-ba9d-171a03d7437a',
-        tag: 'Url',
-        tagcolor: 'bg-emerald-800',
-    },
-    {
-        name: "calendar-link",
-        href: 'https://calendar-link-swiftovate.netlify.app/',
-        description: 'Provides a simple way to generate a Google Calendar Scheduling link',
-        image: 'https://repository-images.githubusercontent.com/561443203/414f0d0b-2650-456b-a07b-f76dd7152731',
-        tag: 'Url',
-        tagcolor: 'bg-emerald-800',
-    },
+import { Link } from "react-router-dom"
+import { CardsData } from "../constants/CardsData"
+import { Card } from "../components/Card"
 
-]
+export const TagPage = () => {
+    // fetch url and get the tag
+    const url = window.location.href
+    const tag = url.split("/").pop()
+
+    // fetch('https://api.github.com/users/pratikkabade/repos')
+    //     .then(response => response.json())
+    //     .then(data => {
+    //         console.log(data);
+    //     })
+    //     .catch(error => console.error('Error fetching the repositories:', error));
+
+
+    //fetch the tag from the url and filter the cards
+    const props = CardsData.find((card) => card.tag === tag)
+
+    return (
+        <div className="fullpage h-screen">
+            <div className="flex flex-col justify-between h-screen bg-slate-900">
+                <div className="flex flex-col">
+                    <div className="text-white text-5xl max-lg:text-3xl max-md:text-xl font-bold whitespace-nowrap">
+                        Some of our {tag} products
+                    </div>
+                    <Link to={'/Landing-Page/'}>
+                        <p
+                            className={`mt-5
+                            ${props?.tagcolor}
+                            hover:bg-opacity-80
+                            font-bold text-white rounded-full w-fit px-4 py-0.5 z-10`}>
+                            {tag}
+                            <i className="fas fa-x ml-2"></i>
+                        </p>
+                    </Link>
+                </div>
+
+                <div className="caraosel">
+                    {
+                        CardsData
+                            .filter((card) => card.tag === tag)
+                            .map((card, index) => {
+                                return <Card key={index}
+                                    // name={card.name}
+                                    // href={card.href}
+                                    // description={card.description}
+                                    // image={card.image}
+                                    tag={card.tag}
+                                    tagcolor={card.tagcolor}
+                                />
+                            })
+                    }
+                </div>
+            </div>
+        </div>
+    )
+}

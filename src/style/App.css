@@ -57,3 +57,26 @@
     transform: none;
     visibility: visible;
 }
+
+.caraosel::-webkit-scrollbar {
+    height: 25px;
+}
+
+/* Track */
+.caraosel::-webkit-scrollbar-track {
+    --tw-bg-opacity: 0;
+    background-color: rgb(241 245 249 / var(--tw-bg-opacity));
+}
+
+/* Handle */
+.caraosel::-webkit-scrollbar-thumb {
+    --tw-bg-opacity: 1;
+    border-radius: 5px;
+    background: linear-gradient(to right, #350053, #350053);
+}
+
+/* Handle on hover */
+.caraosel::-webkit-scrollbar-thumb:hover {
+    --tw-bg-opacity: 1;
+    background: linear-gradient(to right, #2e0048, #2e0048);
+}

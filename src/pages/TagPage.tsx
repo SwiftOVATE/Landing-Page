@@ -1,11 +1,19 @@
 import { Link } from "react-router-dom"
-import { Card } from "../components/layout/Card"
 import { CardsData } from "../constants/CardsData"
+import { Card } from "../components/Card"
 
 export const TagPage = () => {
     // fetch url and get the tag
     const url = window.location.href
     const tag = url.split("/").pop()
+
+    // fetch('https://api.github.com/users/pratikkabade/repos')
+    //     .then(response => response.json())
+    //     .then(data => {
+    //         console.log(data);
+    //     })
+    //     .catch(error => console.error('Error fetching the repositories:', error));
+
 
     //fetch the tag from the url and filter the cards
     const props = CardsData.find((card) => card.tag === tag)
@@ -23,7 +31,7 @@ export const TagPage = () => {
                             ${props?.tagcolor}
                             hover:bg-opacity-80
                             font-bold text-white rounded-full w-fit px-4 py-0.5 z-10`}>
-                            {props?.tag}
+                            {tag}
                             <i className="fas fa-x ml-2"></i>
                         </p>
                     </Link>
@@ -35,10 +43,10 @@ export const TagPage = () => {
                             .filter((card) => card.tag === tag)
                             .map((card, index) => {
                                 return <Card key={index}
-                                    name={card.name}
-                                    href={card.href}
-                                    description={card.description}
-                                    image={card.image}
+                                    // name={card.name}
+                                    // href={card.href}
+                                    // description={card.description}
+                                    // image={card.image}
                                     tag={card.tag}
                                     tagcolor={card.tagcolor}
                                 />
