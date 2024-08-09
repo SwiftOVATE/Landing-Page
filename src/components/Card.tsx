@@ -13,7 +13,7 @@ export const Card = (props: any) => {
                     {
                         props.image === '' ?
                             <></> :
-                            <img src={props.image} alt="logo" className="w-52 h-32 max-lg:w-28 max-lg:h-16 rounded-lg" />
+                            <img src={props.image} alt="logo" className="w-52 h-28 max-lg:w-28 max-lg:h-16 rounded-lg" />
                     }
                     <h1 className="text-xl max-lg:text-lg font-bold mt-2">
                         {props.name}
