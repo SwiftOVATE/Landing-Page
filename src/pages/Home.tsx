@@ -14,16 +14,16 @@ export const Home = () => {
                         draggable="false"
                         alt="banner" />
                     <MoveDownSection>
-                        <div className="text-white text-7xl max-md:text-5xl max-sm:text-3xl max-lg:text-center font-bold my-3">
+                        <div className="text-white text-7xl max-md:text-6xl max-sm:text-5xl max-lg:text-center font-bold my-3">
                             Innovate Swiftly
                         </div>
                     </MoveDownSection>
                 </div>
             </div>
 
-            <div className="flex flex-col justify-around max-lg:justify-center h-screen bg-slate-900">
+            <div className="flex flex-col justify-around max-lg:justify-center h-screen bg-gradient-to-b from-teal-800 to-cyan-900">
                 <FadeInSection>
-                    <div className="text-white text-7xl max-md:text-5xl max-sm:text-3xl max-lg:text-center font-bold my-3 cursor-default">
+                    <div className="text-white text-7xl max-md:text-6xl max-sm:text-5xl max-lg:text-center font-bold my-3 cursor-default">
                         Some of our Top Products
                     </div>
                 </FadeInSection>
@@ -32,9 +32,9 @@ export const Home = () => {
                 </div>
             </div>
 
-            <div className="flex flex-col justify-around max-lg:justify-center h-screen bg-slate-900">
+            <div className="flex flex-col justify-around max-lg:justify-center h-screen bg-gradient-to-b from-teal-800 to-cyan-900">
                 <FadeInSection>
-                    <div className="text-white text-7xl max-md:text-5xl max-sm:text-3xl max-lg:text-center font-bold my-3 cursor-default">
+                    <div className="text-white text-7xl max-md:text-6xl max-sm:text-5xl max-lg:text-center font-bold my-3 cursor-default">
                         Sibling Products from Development-Guide
                     </div>
                 </FadeInSection>
@@ -43,9 +43,9 @@ export const Home = () => {
                 </div>
             </div>
 
-            <div className="flex flex-col justify-around max-lg:justify-center h-screen bg-slate-900">
+            <div className="flex flex-col justify-around max-lg:justify-center h-screen bg-gradient-to-b from-teal-800 to-cyan-900">
                 <FadeInSection>
-                    <div className="text-white text-7xl max-md:text-5xl max-sm:text-3xl max-lg:text-center font-bold my-3 cursor-default">
+                    <div className="text-white text-7xl max-md:text-6xl max-sm:text-5xl max-lg:text-center font-bold my-3 cursor-default">
                         Some of my Projects
                     </div>
                 </FadeInSection>

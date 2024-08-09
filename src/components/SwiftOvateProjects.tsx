@@ -1,16 +1,13 @@
 import { useState } from "react"
 import { Card } from "./Card"
-import { IMAGE_BASE_URL, SWIFTOVATE_URL } from "../constants/URLS"
+import { IMAGE_BASE_URL } from "../constants/URLS"
 
 export const SwiftOvateProjects = () => {
     const [projects, setProjects] = useState([])
 
-    const url = SWIFTOVATE_URL;
-
     const fetchData = async () => {
-        console.log('fetching data')
-        const response = await fetch(url)
-        const res = await response.json()
+        console.log('pulling saved data')
+        const res = JSON.parse(localStorage.getItem('swiftovate_data') || '[{}]')
         const data = res.filter((p: any) => p.name.includes('.github') === false)
         const project = data
             .map((project: any) => {

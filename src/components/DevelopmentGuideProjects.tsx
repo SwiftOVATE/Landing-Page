@@ -1,7 +1,7 @@
 import { useState } from "react"
 import { Card } from "./Card"
 import { FadeInSection } from "./Animations"
-import { DEVELOPMENTGUIDE_URL, IMAGE_BASE_URL } from "../constants/URLS";
+import { IMAGE_BASE_URL } from "../constants/URLS";
 
 export const DevelopmentGuideProjects = () => {
     const [projects, setProjects] = useState([]);
@@ -10,12 +10,9 @@ export const DevelopmentGuideProjects = () => {
     const [archivedshow, setArchivedShow] = useState(false);
     const [proShow, setProShow] = useState(false);
 
-    const url = DEVELOPMENTGUIDE_URL;
-
-    const fetchData = async () => {
-        console.log('fetching data')
-        const response = await fetch(url)
-        const res = await response.json()
+    const fetchData = () => {
+        console.log('pulling saved data')
+        const res = JSON.parse(localStorage.getItem('devguide_data') || '[{}]')
         const data = res.filter((p: any) => p.name.includes('.github') === false)
         const project = data
             .filter((project: any) => project.topics.includes('pro-start'))

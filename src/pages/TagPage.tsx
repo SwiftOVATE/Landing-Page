@@ -1,36 +1,51 @@
 import { Link } from "react-router-dom"
-import { CardsData } from "../constants/CardsData"
 import { Card } from "../components/Card"
+import { useEffect, useState } from "react"
+import { IMAGE_BASE_URL } from "../constants/URLS"
 
 export const TagPage = () => {
     // fetch url and get the tag
     const url = window.location.href
-    const tag = url.split("/").pop()
+    const _tag = url.split("/").pop()
 
-    // fetch('https://api.github.com/users/pratikkabade/repos')
-    //     .then(response => response.json())
-    //     .then(data => {
-    //         console.log(data);
-    //     })
-    //     .catch(error => console.error('Error fetching the repositories:', error));
+    const [combined_data, setCombined_data] = useState<any[]>([localStorage.getItem('combined_data')]);
+    const [show, setShow] = useState<boolean>(false)
+    const [tag, setTag] = useState<any>('')
 
 
-    //fetch the tag from the url and filter the cards
-    const props = CardsData.find((card) => card.tag === tag)
+    // combined_data.length === 1 &&
+    useEffect(() => {
+        if (_tag === 'react') {
+            setTag('my-react-projects')
+        } else if (_tag === 'dotnet') {
+            setTag('my-dotnet-projects')
+        } else if (_tag === 'python') {
+            setTag('my-python-projects')
+        } else {
+            setTag(_tag)
+        }
+
+        const personal_data = JSON.parse(localStorage.getItem('personal_data') || '[{}]')
+        const devguide_data = JSON.parse(localStorage.getItem('devguide_data') || '[{}]')
+        const swiftovate_data = JSON.parse(localStorage.getItem('swiftovate_data') || '[{}]')
+
+        setCombined_data([...personal_data, ...swiftovate_data, ...devguide_data]);
+        setShow(true)
+    }, [_tag]);
 
     return (
-        <div className="fullpage h-screen">
+        <div className="">
             <div className="flex flex-col justify-between h-screen bg-slate-900">
                 <div className="flex flex-col">
-                    <div className="text-white text-5xl max-lg:text-3xl max-md:text-xl font-bold whitespace-nowrap">
+                    <div className="text-white text-7xl max-lg:text-6xl max-md:text-5xl font-bold ">
                         Some of our {tag} products
                     </div>
                     <Link to={'/Landing-Page/'}>
                         <p
                             className={`mt-5
-                            ${props?.tagcolor}
+                            border-stone-800 text-stone-800 bg-stone-50 hover:text-stone-100 hover:bg-stone-800
                             hover:bg-opacity-80
-                            font-bold text-white rounded-full w-fit px-4 py-0.5 z-10`}>
+                            font-bold rounded-full w-fit px-4 py-0.5 z-10`}>
                             {tag}
                             <i className="fas fa-x ml-2"></i>
                         </p>
@@ -39,16 +54,18 @@ export const TagPage = () => {
 
                 <div className="caraosel">
                     {
-                        CardsData
-                            .filter((card) => card.tag === tag)
+                        show &&
+                        combined_data
+                            .filter((card) => card.topics.includes(tag, _tag))
                             .map((card, index) => {
                                 return <Card key={index}
-                                    // name={card.name}
-                                    // href={card.href}
-                                    // description={card.description}
-                                    // image={card.image}
-                                    tag={card.tag}
-                                    tagcolor={card.tagcolor}
+                                    name={card.name}
+                                    href={card.homepage ? card.homepage : card.html_url}
+                                    git={card.html_url}
+                                    description={card.description}
+                                    image={IMAGE_BASE_URL + card.name + '.png'}
+                                    tag={tag} //:TODO :BUG
+                                    tagcolor={'border-stone-800 text-stone-800 bg-stone-50 hover:text-stone-100 hover:bg-stone-800'}
                                 />
                             })
                     }
